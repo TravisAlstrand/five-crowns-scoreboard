@@ -1,0 +1,10 @@
+{
+  "expo": {
+    "scheme": "acme",
+    "web": {
+      "bundler": "metro"
+    },
+    "name": "Five-Crowns-Scoreboard",
+    "slug": "Five-Crowns-Scoreboard"
+  }
+}
