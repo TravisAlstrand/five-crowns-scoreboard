@@ -12,7 +12,7 @@ function PlayerSelect() {
       <ScrollView style={styles.scrollView}>
         {numOfBtns.map((num, index) => {
           return (
-            <Link href="/PlayerSelect" key={index} asChild>
+            <Link href={`/Scoreboard?number=${num}`} key={index} asChild>
               <TouchableOpacity style={styles.btn}>
                 <Text style={styles.btnText}>{num}</Text>
               </TouchableOpacity>
