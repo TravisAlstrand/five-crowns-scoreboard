@@ -1,14 +1,17 @@
 import { useState } from "react";
 import { Text, View, TouchableOpacity } from "react-native";
-import { Link } from "expo-router";
+import { useNavigation } from '@react-navigation/native';
 import PlayerAdd from "./components/PlayerAdd";
-import { usePlayerContext } from "./context";
 import { styles } from "./stylesheet/styles";
 
 export default function PlayerSetup() {
 
-  const { gamePlayers, setGamePlayers } = usePlayerContext();
   const [players, setPlayers] = useState([{}, {}]);
+  const navigation = useNavigation();
+
+  function goToScoreboardScreen() {
+    navigation.navigate('Scoreboard', { players });
+  }
 
   function handleUpdatePlayer(text, index) {
     let newArray = [...players]
@@ -32,10 +35,6 @@ export default function PlayerSetup() {
     const newPlayer = {};
     let newArray = [...players, newPlayer];
     setPlayers(newArray);
-  }
-
-  function updateContext() {
-    handlePlayersChange(players);
   }
 
   return (
@@ -62,11 +61,9 @@ export default function PlayerSetup() {
           </TouchableOpacity> :
           <></>}
 
-        <Link href="/Scoreboard" asChild>
-          <TouchableOpacity style={styles.btnLrg} onPress={updateContext}>
-            <Text style={styles.btnLrgText}>Start Game</Text>
-          </TouchableOpacity>
-        </Link>
+        <TouchableOpacity style={styles.btnLrg} onPress={goToScoreboardScreen}>
+          <Text style={styles.btnLrgText}>Start Game</Text>
+        </TouchableOpacity>
       </View>
     </View>
   );

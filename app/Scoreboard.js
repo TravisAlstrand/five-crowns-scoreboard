@@ -1,14 +1,16 @@
-import { useState, useEffect, useContext } from 'react';
+import { useState, useEffect } from 'react';
 import { View, Text, StyleSheet, SafeAreaView } from 'react-native';
-import { PlayerContext } from './context';
+import { useRoute } from '@react-navigation/native';
 
 function Scoreboard() {
 
-  const { gamePlayers } = useContext(PlayerContext);
   const [wildCard, setWildCard] = useState(3);
+  const [players, setPlayers] = useState([]);
+  const route = useRoute();
 
   useEffect(() => {
-    console.log(gamePlayers);
+    setPlayers(route.params.players);
+    console.log(players)
   }, [wildCard]);
 
   return (
