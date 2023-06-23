@@ -1,23 +1,24 @@
-import { useState, useEffect } from 'react';
-import { View, Text, StyleSheet, ScrollView } from 'react-native';
-import { useLocalSearchParams } from 'expo-router';
+import { useState, useEffect, useContext } from 'react';
+import { View, Text, StyleSheet, SafeAreaView } from 'react-native';
+import { PlayerContext } from './context';
 
 function Scoreboard() {
 
-  const { number } = useLocalSearchParams();
+  const { gamePlayers } = useContext(PlayerContext);
   const [wildCard, setWildCard] = useState(3);
 
   useEffect(() => {
-
+    console.log(gamePlayers);
   }, [wildCard]);
 
   return (
-    <View style={styles.main}>
-      <Text style={styles.title}>{wildCard}s are wild!</Text>
-      <ScrollView style={styles.scoreboard}>
-        <View></View>
-      </ScrollView>
-    </View>
+    <SafeAreaView>
+      <View style={styles.main}>
+        <Text style={styles.title}>{wildCard}s are wild!</Text>
+        <View style={styles.scoreboard}>
+        </View>
+      </View>
+    </SafeAreaView>
   )
 }
 
@@ -26,8 +27,7 @@ const styles = StyleSheet.create({
     justifyContent: "center",
     alignItems: "center",
     paddingHorizontal: 10,
-    paddingTop: 25,
-    paddingBottom: 40
+    paddingVertical: 60
   },
   title: {
     marginBottom: 40,
@@ -36,8 +36,7 @@ const styles = StyleSheet.create({
   },
   scoreboard: {
     borderWidth: 5,
-    width: "90%",
-    height: "50%"
+    width: "90%"
   }
 });
 
