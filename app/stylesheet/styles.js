@@ -37,6 +37,14 @@ export const styles = StyleSheet.create({
     fontSize: 30,
     color: "#fff"
   },
+  errorContainer: {
+    marginBottom: 20,
+    textAlign: "center"
+  },
+  errorText: {
+    fontSize: 20,
+    color: "red"
+  },
   playerInput: {
     width: "90%",
     height: 50,
@@ -68,5 +76,23 @@ export const styles = StyleSheet.create({
     flexDirection: "row",
     justifyContent: "space-between",
     alignItems: "center"
+  },
+  scoreboard: {
+    borderColor: "black",
+    borderWidth: "2px",
+    height: "fit-content"
+  },
+  playerContainer: {
+    flexDirection: "row",
+    height: "2rem",
+    borderBottomWidth: "2px",
+    borderBottomColor: "grey"
+  },
+  playerSection: {
+    justifyContent: "center",
+    alignItems: "center",
+    width: "25%",
+    borderRightWidth: "1px",
+    borderRightColor: "red"
   }
 });

@@ -7,25 +7,51 @@ import { styles } from "./stylesheet/styles";
 export default function PlayerSetup() {
 
   const [players, setPlayers] = useState([{}, {}]);
+  const [errors, setErrors] = useState([]);
   const navigation = useNavigation();
 
   function goToScoreboardScreen() {
-    navigation.navigate('Scoreboard', { players });
+    let errorsArray = [];
+    let foundBlankName = false;
+
+    // check if any player inputs are blank
+    players.forEach(player => {
+      if (!player.name) {
+        foundBlankName = true;
+      }
+    });
+
+    if (foundBlankName) {
+      errorsArray.push("* Please provide a name for every player or remove them.")
+    }
+
+    if (players.length < 2) {
+      errorsArray.push("* You need at least two players.")
+    }
+
+    if (errorsArray.length) {
+      setErrors(errorsArray);
+    } else {
+      navigation.navigate('Scoreboard', { players });
+    }
   }
 
   function handleUpdatePlayer(text, index) {
     let newArray = [...players]
-    const playerObject = {
+    let playerObject = {
       "name": text,
       "score": 0,
-      "position": index
+      "isDealer": false,
+      "isLeader": false
+    }
+    if (index === 0) {
+      playerObject.isDealer = true;
     }
     newArray[index] = playerObject;
     setPlayers(newArray);
   }
 
   function handleRemovePlayer(index) {
-    console.log(index);
     let newArray = [...players];
     newArray.splice(index, 1);
     setPlayers(newArray);
@@ -41,7 +67,13 @@ export default function PlayerSetup() {
     <View style={styles.growContainer}>
       <View style={styles.mainContainer}>
         <Text style={styles.title}>Let's set up the players!</Text>
-
+        {errors.map((error, index) => {
+          return (
+            <View style={styles.errorContainer} key={index}>
+              <Text style={styles.errorText}>{error}</Text>
+            </View>
+          )
+        })}
         {players.map((player, index) => {
           return (
             <View key={index}>

@@ -1,16 +1,31 @@
 import { useState, useEffect } from 'react';
-import { View, Text, StyleSheet, SafeAreaView } from 'react-native';
+import { View, Text, SafeAreaView } from 'react-native';
 import { useRoute } from '@react-navigation/native';
+import { styles } from "./stylesheet/styles";
+import Player from './components/Player';
 
 function Scoreboard() {
 
   const [wildCard, setWildCard] = useState(3);
-  const [players, setPlayers] = useState([]);
+  const [players, setPlayers] = useState([
+    { "name": "Taco Man", "score": 80, "isDealer": true, "isLeader": false },
+    { "name": "Gunner Boi", "score": 70, "isDealer": false, "isLeader": false },
+    { "name": "Lady Krista", "score": 60, "isDealer": false, "isLeader": false },
+    { "name": "Cheese Dude", "score": 50, "isDealer": false, "isLeader": false },
+    { "name": "Rizzo", "score": 40, "isDealer": false, "isLeader": false },
+    { "name": "aswaerijasdfjoiuf9aw94riajlk;lksd;coiaoweir", "score": 30, "isDealer": false, "isLeader": false },
+    { "name": "Gut Punch", "score": 20, "isDealer": false, "isLeader": false },
+    { "name": "Donkey", "score": 10, "isDealer": false, "isLeader": true },
+  ]);
+  // const [players, setPlayers] = useState([]);
   const route = useRoute();
 
   useEffect(() => {
-    setPlayers(route.params.players);
-    console.log(players)
+    if (!players.length) {
+      setPlayers(route.params.players);
+      console.log("Players Set");
+    }
+    console.log("useEffect Ran")
   }, [wildCard]);
 
   return (
@@ -18,28 +33,14 @@ function Scoreboard() {
       <View style={styles.main}>
         <Text style={styles.title}>{wildCard}s are wild!</Text>
         <View style={styles.scoreboard}>
+          <Player />
+          {players.map((player, index) => {
+            return <Player player={player} key={index} />
+          })}
         </View>
       </View>
     </SafeAreaView>
   )
 }
-
-const styles = StyleSheet.create({
-  main: {
-    justifyContent: "center",
-    alignItems: "center",
-    paddingHorizontal: 10,
-    paddingVertical: 60
-  },
-  title: {
-    marginBottom: 40,
-    fontSize: 50,
-    fontWeight: "bold"
-  },
-  scoreboard: {
-    borderWidth: 5,
-    width: "90%"
-  }
-});
 
 export default Scoreboard;
