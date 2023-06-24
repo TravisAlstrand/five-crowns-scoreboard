@@ -7,7 +7,7 @@ export default function Player({ player }) {
       <View style={styles.playerSection}>
         {player ?
           <Text>{player.name}</Text> :
-          <Text>Player Name</Text>
+          <Text>Player</Text>
         }
       </View>
       <View style={styles.playerSection}>
@@ -28,6 +28,6 @@ export default function Player({ player }) {
           <Text>Current Score</Text>
         }
       </View>
-    </View>
+    </View >
   )
 }

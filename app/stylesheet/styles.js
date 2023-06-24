@@ -78,13 +78,16 @@ export const styles = StyleSheet.create({
     alignItems: "center"
   },
   scoreboard: {
+    width: "100%",
+    maxWidth: "525px",
     borderColor: "black",
     borderWidth: "2px",
-    height: "fit-content"
+    borderRadius: 10,
+    textAlign: "center"
   },
   playerContainer: {
     flexDirection: "row",
-    height: "2rem",
+    height: "4rem",
     borderBottomWidth: "2px",
     borderBottomColor: "grey"
   },

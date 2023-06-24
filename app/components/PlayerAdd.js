@@ -7,12 +7,13 @@ export default function PlayerAdd({ editPlayer, index, player }) {
   }
 
   return (
-    <View style={styles.container}>
+    <View>
       <TextInput
         onChangeText={handleChange}
         style={styles.playerInput}
         placeholder="Edit Player Name..."
         value={player.name ? player.name : ""}
+        maxLength={10}
       />
     </View>
   );

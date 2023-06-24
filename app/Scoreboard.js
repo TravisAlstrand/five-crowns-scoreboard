@@ -9,11 +9,11 @@ function Scoreboard() {
   const [wildCard, setWildCard] = useState(3);
   const [players, setPlayers] = useState([
     { "name": "Taco Man", "score": 80, "isDealer": true, "isLeader": false },
-    { "name": "Gunner Boi", "score": 70, "isDealer": false, "isLeader": false },
-    { "name": "Lady Krista", "score": 60, "isDealer": false, "isLeader": false },
+    { "name": "GunnerBoi", "score": 70, "isDealer": false, "isLeader": false },
+    { "name": "LadyKrista", "score": 60, "isDealer": false, "isLeader": false },
     { "name": "Cheese Dude", "score": 50, "isDealer": false, "isLeader": false },
     { "name": "Rizzo", "score": 40, "isDealer": false, "isLeader": false },
-    { "name": "aswaerijasdfjoiuf9aw94riajlk;lksd;coiaoweir", "score": 30, "isDealer": false, "isLeader": false },
+    { "name": "Godzilla", "score": 30, "isDealer": false, "isLeader": false },
     { "name": "Gut Punch", "score": 20, "isDealer": false, "isLeader": false },
     { "name": "Donkey", "score": 10, "isDealer": false, "isLeader": true },
   ]);
@@ -30,7 +30,7 @@ function Scoreboard() {
 
   return (
     <SafeAreaView>
-      <View style={styles.main}>
+      <View style={styles.growContainer}>
         <Text style={styles.title}>{wildCard}s are wild!</Text>
         <View style={styles.scoreboard}>
           <Player />
