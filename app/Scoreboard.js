@@ -1,5 +1,5 @@
 import { useState, useEffect } from 'react';
-import { View, Text, SafeAreaView } from 'react-native';
+import { View, Text, SafeAreaView, TouchableOpacity } from 'react-native';
 import { useRoute } from '@react-navigation/native';
 import { styles } from "./stylesheet/styles";
 import Player from './components/Player';
@@ -37,6 +37,14 @@ function Scoreboard() {
           {players.map((player, index) => {
             return <Player player={player} key={index} />
           })}
+        </View>
+        <View style={styles.scoreboardBtns}>
+          <TouchableOpacity style={styles.btnMed}>
+            <Text style={styles.btnMedText}>End Round</Text>
+          </TouchableOpacity>
+          <TouchableOpacity style={styles.btnMed}>
+            <Text style={styles.btnMedText}>See All Scores</Text>
+          </TouchableOpacity>
         </View>
       </View>
     </SafeAreaView>

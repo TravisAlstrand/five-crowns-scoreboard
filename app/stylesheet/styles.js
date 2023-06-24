@@ -1,6 +1,9 @@
 import { StyleSheet } from "react-native";
 
 export const styles = StyleSheet.create({
+  bold: {
+    fontWeight: "bold"
+  },
   growContainer: {
     flex: 1,
     alignItems: "center",
@@ -37,21 +40,34 @@ export const styles = StyleSheet.create({
     fontSize: 30,
     color: "#fff"
   },
+  btnMed: {
+    justifyContent: "center",
+    alignItems: "center",
+    width: '45%',
+    height: 75,
+    borderRadius: 50,
+    backgroundColor: "#000"
+  },
+  btnMedText: {
+    fontSize: 18,
+    fontWeight: "bold",
+    color: "#fff"
+  },
   errorContainer: {
     marginBottom: 20,
-    textAlign: "center"
   },
   errorText: {
     fontSize: 20,
+    textAlign: "center",
     color: "red"
   },
   playerInput: {
-    width: "90%",
+    width: "95%",
     height: 50,
     marginTop: 10,
     marginBottom: 30,
     borderColor: "black",
-    borderWidth: "2px",
+    borderWidth: 2,
     borderRadius: 25,
     paddingLeft: 25,
     fontSize: 20,
@@ -96,6 +112,17 @@ export const styles = StyleSheet.create({
     alignItems: "center",
     width: "25%",
     borderRightWidth: "1px",
-    borderRightColor: "red"
+    borderRightColor: "red",
+  },
+  icon: {
+    width: 50
+  },
+  scoreboardBtns: {
+    flexDirection: "row",
+    width: "100%",
+    maxWidth: "525px",
+    marginTop: 20,
+    justifyContent: "space-between",
+    alignItems: "center"
   }
 });
