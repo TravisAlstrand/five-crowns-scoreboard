@@ -1,12 +1,14 @@
 import { useState, useEffect } from 'react';
-import { View, Text, SafeAreaView, TouchableOpacity } from 'react-native';
+import { ScrollView, View, Text, SafeAreaView, TouchableOpacity, Modal } from 'react-native';
 import { useRoute } from '@react-navigation/native';
 import { styles } from "./stylesheet/styles";
 import Player from './components/Player';
+import PlayerScore from './components/PlayerScore';
 
 function Scoreboard() {
 
   const [wildCard, setWildCard] = useState(3);
+  const [modalVisible, setModalVisible] = useState(false);
   const [players, setPlayers] = useState([
     { "name": "Taco Man", "score": 80, "isDealer": true, "isLeader": false },
     { "name": "GunnerBoi", "score": 70, "isDealer": false, "isLeader": false },
@@ -30,7 +32,7 @@ function Scoreboard() {
 
   return (
     <SafeAreaView>
-      <View style={styles.growContainer}>
+      <View style={!modalVisible ? styles.growContainer : styles.noDisplay}>
         <Text style={styles.title}>{wildCard}s are wild!</Text>
         <View style={styles.scoreboard}>
           <Player />
@@ -40,14 +42,49 @@ function Scoreboard() {
         </View>
         <View style={styles.scoreboardBtns}>
           <TouchableOpacity style={styles.btnMed}>
-            <Text style={styles.btnMedText}>End Round</Text>
+            <Text
+              style={styles.btnMedText}
+              onPress={() => setModalVisible(true)}>
+              End Round
+            </Text>
           </TouchableOpacity>
           <TouchableOpacity style={styles.btnMed}>
             <Text style={styles.btnMedText}>See All Scores</Text>
           </TouchableOpacity>
         </View>
       </View>
-    </SafeAreaView>
+      <View>
+        <Modal
+          animationType="slide"
+          transparent={true}
+          visible={modalVisible}
+          onRequestClose={() => {
+            setModalVisible(!modalVisible);
+          }}>
+          <View style={styles.modalContainer}>
+            <View style={styles.modal}>
+              <Text style={styles.title}>Enter each player's score this round</Text>
+              {players.map((player, index) =>
+                <PlayerScore player={player} key={index} />
+              )}
+              <View style={styles.scoreboardBtns}>
+                <TouchableOpacity
+                  style={styles.btnMed}
+                  onPress={() => setModalVisible(!modalVisible)}>
+                  <Text style={styles.btnMedText}>Start Next Round</Text>
+                </TouchableOpacity>
+                <TouchableOpacity
+                  style={styles.btnMed}
+                  onPress={() => setModalVisible(!modalVisible)}>
+                  <Text style={styles.btnMedText}>Cancel</Text>
+                </TouchableOpacity>
+              </View>
+            </View>
+          </View>
+        </Modal>
+      </View >
+
+    </SafeAreaView >
   )
 }
 

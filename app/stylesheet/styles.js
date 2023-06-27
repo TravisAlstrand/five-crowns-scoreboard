@@ -4,6 +4,9 @@ export const styles = StyleSheet.create({
   bold: {
     fontWeight: "bold"
   },
+  noDisplay: {
+    display: "none"
+  },
   growContainer: {
     flex: 1,
     alignItems: "center",
@@ -71,7 +74,7 @@ export const styles = StyleSheet.create({
     borderRadius: 25,
     paddingLeft: 25,
     fontSize: 20,
-    placeholderTextColor: "grey"
+
   },
   plusBtn: {
     width: 50,
@@ -111,7 +114,7 @@ export const styles = StyleSheet.create({
     justifyContent: "center",
     alignItems: "center",
     width: "25%",
-    borderRightWidth: "1px",
+    borderWidth: "1px",
     borderRightColor: "red",
   },
   icon: {
@@ -124,5 +127,27 @@ export const styles = StyleSheet.create({
     marginTop: 20,
     justifyContent: "space-between",
     alignItems: "center"
+  },
+  modalContainer: {
+    flex: 1,
+    justifyContent: "center",
+    alignItems: "center"
+  },
+  modal: {
+    width: "100%",
+    alignItems: "center"
+  },
+  scoreEdit: {
+    flexDirection: "row",
+    alignItems: "center",
+    justifyContent: "space-evenly",
+    width: "100%"
+  },
+  textContainer: {
+    width: "50%",
+    textAlign: "center"
+  },
+  editInputContainer: {
+    flexBasis: "50%"
   }
 });

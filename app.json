@@ -5,6 +5,12 @@
       "bundler": "metro"
     },
     "name": "Five-Crowns-Scoreboard",
-    "slug": "Five-Crowns-Scoreboard"
+    "slug": "fivecrownscoreboard",
+    "extra": {
+      "eas": {
+        "projectId": "de717b80-8a71-40f3-9686-25487c39dbb7"
+      }
+    },
+    "owner": "travisalstrand"
   }
 }

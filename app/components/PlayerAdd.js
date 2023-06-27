@@ -14,6 +14,7 @@ export default function PlayerAdd({ editPlayer, index, player }) {
         placeholder="Edit Player Name..."
         value={player.name ? player.name : ""}
         maxLength={10}
+        placeholderTextColor="grey"
       />
     </View>
   );
